@@ -1,0 +1,37 @@
+﻿@using WebMarket_Web.Areas.Admin.Models.Category
+@model CreateCategoryViewModel
+@{
+}
+
+<div class="new-users">
+    <h2>Insert Category</h2>
+    <div class="user-list">
+        <form asp-area="Admin" asp-controller="Category" asp-action="Create" method="post">
+
+            <input type="hidden" asp-for="ParentId" />
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Title)
+            </div>
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Slug)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaTag)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaDescription)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Description)
+            </div>
+
+            <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Indert</button>
+                  </div>
+        </form>
+    </div>
+</div>

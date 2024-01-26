@@ -19,7 +19,8 @@ namespace WebMarket_CoreLayer.Mapper
                 MetaDescription = c.MetaDescription,
                 MetaTag = c.MetaTag,
                 ParentId = c.ParentId,
-                Slug = c.Slug
+                Slug = c.Slug,
+                Description=c.Description
             };
         }
     }

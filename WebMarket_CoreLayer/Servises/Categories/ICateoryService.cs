@@ -12,6 +12,7 @@ namespace WebMarket_CoreLayer.Servises.Categories
     {
         OperationResult CreateCatgory(CreateCategoryDto command);
         OperationResult EditCategory(EditCategoryDto command);
+        OperationResult DeleteCategory(DeleteCategoryDto command);
         List<CategoryDto> GetAllCategory();
         List<CategoryDto> GetAllChildCategory(int parentId);
         CategoryDto GetCategoryBy(int id);

@@ -26,10 +26,23 @@ namespace WebMarket_CoreLayer.Servises.Categories
                 MetaDescription = command.MetaDescription,
                 MetaTag = command.MetaTag,
                 Slug=command.Slug.ToSlug(),
-                ParentId=command.ParentId
+                ParentId=command.ParentId,
+                Description=command.Description
             };
 
             _context.categories.Add(catgory);
+            _context.SaveChanges();
+
+            return OperationResult.Success();
+        }
+
+        public OperationResult DeleteCategory(DeleteCategoryDto command)
+        {
+            var category = _context.categories.FirstOrDefault(c => c.Id == command.Id);
+            if (category == null)
+                return OperationResult.NotFound();
+           
+            _context.Remove(category);
             _context.SaveChanges();
 
             return OperationResult.Success();
@@ -50,11 +63,12 @@ namespace WebMarket_CoreLayer.Servises.Categories
             category.MetaDescription = command.MetaDescription;
             category.MetaTag = command.MetaTag;
             category.Slug = command.Slug.ToSlug();
+            category.Description = command.Description;
 
             _context.Update(category);
             _context.SaveChanges();
             return OperationResult.Success();
-            throw new NotImplementedException();
+          
         }
 
         public List<CategoryDto> GetAllCategory()

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebMarket_CoreLayer.Servises.Categories;
 using WebMarket_DataLayer.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebMarketContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+builder.Services.AddScoped<ICateoryService,CateoryService>();
 
 var app = builder.Build();
 
@@ -30,7 +33,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "AreaMap",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+
+app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.Run();
