@@ -34,74 +34,74 @@
                         </a>
                     </div>
                 </div>
-                <!-- Default Table -->
+            <!-- Default Table -->
                 <div class="dataTable-container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">SubCategory</th>
-                                <th scope="col">Oparation</th>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">SubCategory</th>
+                        <th scope="col">Oparation</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Where(m => m.ParentId == null))
-                            {
-                                <tr>
-                                    <td>@counter</td>
-                                    <td>@item.Title</td>
-                                    <td>
-                                        @if (Model.Any(r => r.ParentId == item.Id))
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Where(m => m.ParentId == null))
+                    {
+                        <tr>
+                            <td>@counter</td>
+                            <td>@item.Title</td>
+                            <td>
+                                @if (Model.Any(r => r.ParentId == item.Id))
+                                {
+                                    <ul class="list-group">
+                                        @foreach (var subItem in Model.Where(m => m.ParentId == item.Id))
                                         {
-                                            <ul class="list-group">
-                                                @foreach (var subItem in Model.Where(m => m.ParentId == item.Id))
-                                                {
 
-                                                    <li>
-                                                        @subItem.Title
-                                                        <a asp-area="Admin" asp-controller="Category"
-                                               asp-action="Edit" asp-route-Id="@subItem.Id"
-                                               style="margin-left:10px;">
-                                                            <i class="bi bi-pencil-square"></i>
-                                                        </a>
-                                                        <a asp-area="Admin" asp-controller="Category"
-                                               asp-action="Delete"
-                                               asp-route-Id="@subItem.Id"
-                                               style="margin-left:10px; color:red;">
-                                                            <i class="bi bi-trash"></i>
-                                                        </a>
-                                                    </li>
-                                                }
-                                            </ul>
+                                            <li>
+                                                @subItem.Title
+                                                <a asp-area="Admin" asp-controller="Category"
+                                       asp-action="Edit" asp-route-Id="@subItem.Id"
+                                       style="margin-left:10px;">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="Category"
+                                       asp-action="Delete"
+                                       asp-route-Id="@subItem.Id"
+                                       style="margin-left:10px; color:red;">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </li>
                                         }
-                                    </td>
-                                    <td>
+                                    </ul>
+                                }
+                            </td>
+                            <td>
 
-                                        <a asp-area="Admin" asp-controller="Category"
-                                       asp-action="Edit" asp-route-Id="@item.Id">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        <a asp-area="Admin" asp-controller="Category" asp-action="Delete"
-                                       asp-route-Id="@item.Id" style="margin-left:10px; color:red;">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+                                <a asp-area="Admin" asp-controller="Category"
+                               asp-action="Edit" asp-route-Id="@item.Id">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete"
+                               asp-route-Id="@item.Id" style="margin-left:10px; color:red;">
+                                    <i class="bi bi-trash"></i>
+                                </a>
 
-                                        <a asp-area="Admin" asp-controller="Category" asp-action="Create"
-                                       asp-route-parentId="@item.Id" style="margin-left:10px;color:green">
-                                            <i class="bi bi-plus-circle-fill"></i>
-                                        </a>
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Create"
+                               asp-route-parentId="@item.Id" style="margin-left:10px;color:green">
+                                    <i class="bi bi-plus-circle-fill"></i>
+                                </a>
 
-                                    </td>
-                                </tr>
-                                counter++;
-                            }
+                            </td>
+                        </tr>
+                        counter++;
+                    }
 
-                        </tbody>
-                    </table>
+                </tbody>
+            </table>
                 </div>
-                <!-- End Default Table Example -->
+            <!-- End Default Table Example -->
                 <div class="dataTable-bottom">
                     <div class="dataTable-info">
                         Showing 1 to 5 of 5 entries

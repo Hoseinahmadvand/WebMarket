@@ -275,24 +275,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" asp-area="Admin" asp-controller="Home" asp-action="Index">
           <i class="bi bi-grid"></i>
           <span>Admin Panel</span>
         </a>
      
       <li class="nav-item">
-        <a class="nav-link collapsed active" asp-area="Admin" asp-controller="Category" asp-action="Index">
           <i class="bi bi-menu-button-wide"></i>
           <span>Categories</span>
         </a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed active" asp-area="Admin" asp-controller="Brand" asp-action="Index">
-          <i class="ri-leaf-line"></i>
-          <span>Brands</span>
-        </a>
-      </li>
      
     </ul>
 
@@ -300,7 +290,17 @@
 
   <main id="main" class="main">
 
-   
+    <div class="pagetitle">
+      <h1>Blank Page</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Blank</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
     <section class="section">
       <div class="row">
         @RenderBody()
