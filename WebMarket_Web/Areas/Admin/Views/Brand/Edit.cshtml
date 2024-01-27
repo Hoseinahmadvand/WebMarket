@@ -1,0 +1,55 @@
+﻿@using WebMarket_Web.Areas.Admin.Models.Brand
+@model EditBrandViewModel
+@{
+      ViewData["Title"] = "Admin";
+    ViewData["Page"] = "Brand";
+    ViewData["SubPage"] = "Insert";
+}
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">@ViewData["Title"]</a></li>
+            <li class="breadcrumb-item">@ViewData["Page"]</li>
+            <li class="breadcrumb-item active">@ViewData["SubPage"]</li>
+            <li class="breadcrumb-item active">@Model.Name</li>
+        </ol>
+    </nav>
+</div>
+<div class="new-users">
+    <h2>Edit @Model.Name</h2>
+    <div class="user-list">
+        <form asp-area="Admin" asp-controller="brand" asp-action="Edit" method="post">
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Name)
+            </div>
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Slug)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaTag)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaDescription)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Description)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Country)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.WebSiteLink)
+            </div>
+
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>
