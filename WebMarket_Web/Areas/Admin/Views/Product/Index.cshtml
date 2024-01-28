@@ -1,7 +1,87 @@
 ﻿@using WebMarket_CoreLayer.DTOs.Product
-@model ProductDto
+@model List<ProductDto>
 @{
+    int counter = 1;
+    ViewData["Title"] = "Admin";
+    ViewData["Page"] = "Product";
+    ViewData["SubPage"] = "";
 }
-<div>
-    
+<div class="pagetitle">
+    <h1>Blank Page</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">@ViewData["Title"]</a></li>
+            <li class="breadcrumb-item">@ViewData["Page"]</li>
+
+        </ol>
+    </nav>
+</div>
+<div class="col-lg-12">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Brands</h5>
+            <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                <div class="dataTable-top">
+                    <div class="dataTable-dropdown">
+                    </div>
+
+                    <div class="dataTable-search">
+                        <a class="btn btn-info col-12" asp-area="Admin" asp-controller="Product" asp-action="Create">
+                            Insert
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Default Table -->
+                <div class="dataTable-container">
+                    <!-- Default Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                               
+                                <th scope="col">Oparation</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@counter</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Price</td>
+
+                                    <td>
+
+                                        <a asp-area="Admin" asp-controller="Product"
+                                       asp-action="Edit" asp-route-Id="@item.Id">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete"
+                                       asp-route-Id="@item.Id" style="margin-left:10px; color:red;">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                counter++;
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Default Table Example -->
+
+            </div>
+        </div>
+
+
+
+    </div>
 </div>

@@ -24,6 +24,22 @@ namespace WebMarket_CoreLayer.Mapper
                 MetaDescription = p.MetaDescription,
                 MetaTag = p.MetaTag
             };
+        }  
+        public static Product MapToCreatePoroductDto(CreatePoroductDto p)
+        {
+            return new Product() 
+            {
+               
+                Name = p.Name,
+                CategoryId = p.CategoryId,
+                SubCategoryId = p.SubCategoryId,
+                Price = p.Price,
+                Description=p.Description,
+                Slug = p.Slug,
+                MetaDescription = p.MetaDescription,
+                MetaTag = p.MetaTag,
+                BrandId = p.BrandId,
+            };
         }
     }
 }

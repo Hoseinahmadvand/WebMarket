@@ -22,6 +22,12 @@ namespace WebMarket_Web.Areas.Admin.Controllers
             return View(categories);
         }
 
+        public IActionResult GetChildCategories(int parentId)
+        {
+            var childCategory = _cateoryService.GetAllChildCategory(parentId);
+            return new JsonResult(childCategory);
+        }
+
         // This Actions For Create New Category Or SubCategory
         // If ParentId == null Leader Category 
         // If ParentId != null Sub Category 

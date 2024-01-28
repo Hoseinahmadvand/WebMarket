@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebMarket_DataLayer.Context;
 
@@ -11,9 +12,10 @@ using WebMarket_DataLayer.Context;
 namespace WebMarket_DataLayer.Migrations
 {
     [DbContext(typeof(WebMarketContext))]
-    partial class WebMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20240128222757_brand")]
+    partial class brand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

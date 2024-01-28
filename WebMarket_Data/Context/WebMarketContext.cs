@@ -24,7 +24,9 @@ namespace WebMarket_DataLayer.Context
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+
         {
+            modelBuilder.Entity<Product>().Property(p => p.SubCategoryId).IsRequired(false);
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;

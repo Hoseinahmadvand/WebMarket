@@ -12,8 +12,9 @@ namespace WebMarket_CoreLayer.Servises.Product
     {
         OperationResult CreateProduct(CreatePoroductDto command);
         OperationResult EditProduct(EditPoroductDto command);
-        OperationResult DeleteProduct(DeletePoroductDto command);
-        List<ProductDto> GetAllProduct();
+        OperationResult DeleteProduct(int id);
+       //ProductForViewDto GetAllProduct();
+       List<ProductDto> GetAllProduct();
         ProductDto GetProductBy(int id);
         ProductDto GetProducttBy(string slug);
         bool IsSlugExist(string slug);

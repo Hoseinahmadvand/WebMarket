@@ -10,8 +10,9 @@ namespace WebMarket_DataLayer.Entities
     public class Product: BaseProductEntity
     {
         public int CategoryId { get; set; }
-        public int? SubCategoryId { get; set; }
+        public Nullable<int> SubCategoryId { get; set; }
 
+        public int BrandId { get; set; }
 
         public decimal Price { get; set; }
         public string Description { get; set; }
@@ -23,5 +24,8 @@ namespace WebMarket_DataLayer.Entities
 
         [ForeignKey("SubCategoryId")]
         public Category SubCategory { get; set; }
+
+        [ForeignKey("BrandId")]
+        public Brand Brand { get; set; }
     }
 }

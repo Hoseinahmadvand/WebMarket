@@ -1,0 +1,107 @@
+﻿@using WebMarket_CoreLayer.Servises.Brands
+@using WebMarket_CoreLayer.Servises.Categories
+@using WebMarket_Web.Areas.Admin.Models.Product
+@inject ICateoryService _categoryService;
+@inject IBrandService _brandService;
+@model CreateProductViewModel
+@{
+    ViewData["Title"] = "Admin";
+    ViewData["Page"] = "Product";
+    ViewData["SubPage"] = "Insert";
+    var categories = _categoryService.GetAllCategory();
+    var brands = _brandService.GetAllBrand();
+}
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">@ViewData["Title"]</a></li>
+            <li class="breadcrumb-item">@ViewData["Page"]</li>
+            <li class="breadcrumb-item active">@ViewData["SubPage"]</li>
+        </ol>
+    </nav>
+</div>
+<div class="new-users">
+    <h2>Insert  Product</h2>
+    <div class="user-list">
+        <form asp-area="Admin" asp-controller="Product" asp-action="Create" method="post">
+            
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Name)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Slug)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaTag)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.MetaDescription)
+            </div>
+
+            <div class="row mb-3">
+                @Html.EditorFor(m => m.Description)
+            </div> 
+
+            <div class="row mb-3">
+                <label>price</label>
+                @Html.EditorFor(m => m.Price)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value="null">انتخاب کنید</option>
+                    @foreach (var item in categories.Where(c => c.ParentId == null))
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="SubCategoryId"></label>
+                <select asp-for="SubCategoryId" class="form-control"></select>
+                <span asp-validation-for="SubCategoryId"></span>
+            </div> 
+
+            <div class="form-group col-md-6">
+               <label asp-for="BrandId"></label>
+                <select asp-for="BrandId" class="form-control">
+                    <option value="null">انتخاب کنید</option>
+                    @foreach (var item in brands)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="BrandId"></span>
+            </div>
+
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">insert</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+        $("#CategoryId").change(function () {
+        var categoryId = $(this).val();
+        $.ajax({
+            url: "/admin/Category/GetChildCategories?parentId=" + categoryId,
+            type: "GET"
+        }).done(function (data) {
+            $("#SubCategoryId").html(`<option value="null">انتخاب کنید</option>`);
+
+            for (var category of data) {
+                $("#SubCategoryId").append(`<option value='${category.id}'>${category.title}</option>`);
+            }
+        });
+    });
+
+</script>
+

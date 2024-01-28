@@ -1,8 +1,31 @@
-﻿@{
+﻿@using WebMarket_CoreLayer.DTOs.Product
+@model List<ProductDto>
+@{
     ViewData["Title"] = "Home Page";
+    int counter = 1;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>got to <a asp-area="Admin" asp-controller="Home" asp-action="Index" >Admin Panel</a>.</p>
+    <p>got to <a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Panel</a>.</p>
 </div>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@counter</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+            </tr>
+            counter++;
+        }
+    </tbody>
+</table>
