@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebMarket_CoreLayer.DTOs.MainPage;
 using WebMarket_CoreLayer.Servises.Brands;
 using WebMarket_CoreLayer.Servises.Categories;
 using WebMarket_CoreLayer.Servises.Product;
@@ -20,6 +21,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<ICateoryService,CateoryService>();
 builder.Services.AddScoped<IBrandService,BrandService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IMainPageService, MainPageService>();
 
 var app = builder.Build();
 

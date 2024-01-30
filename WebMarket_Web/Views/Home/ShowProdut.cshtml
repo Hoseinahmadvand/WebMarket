@@ -1,0 +1,16 @@
+﻿@using WebMarket_CoreLayer.DTOs.Product
+@model ProductDto
+@{
+}
+<div>
+    <img src="~/assets/img/product-2.jpg" style="width:80%;height:250px;"/>
+    <h3>@Model.Name</h3>
+   <p>@Model.Category.Title </p>
+   <hr />
+   <p>Brand: @Model.Brand.Name</p>
+    <br />
+    <p>@Model.Description</p>
+    <hr /> 
+    <h5>@Model.Price</h5>
+    <a class="btn btn-danger"> add to Card</a>
+</div>

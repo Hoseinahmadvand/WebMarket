@@ -19,7 +19,7 @@ namespace WebMarket_CoreLayer.DTOs.Product
         public string Description { get; set; }
         public CategoryDto Category { get; set; }
         public CategoryDto SubCategory { get; set; }
-        //public BrandDto Brand { get; set; }
+        public BrandDto Brand { get; set; }
         public int CategoryId { get; set; }
         public int? SubCategoryId { get; set; }
     }

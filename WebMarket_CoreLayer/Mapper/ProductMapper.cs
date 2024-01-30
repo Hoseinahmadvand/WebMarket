@@ -17,12 +17,16 @@ namespace WebMarket_CoreLayer.Mapper
                 Id = p.Id,
                 Name = p.Name,
                 CategoryId = p.CategoryId,
+                Category = p.Category == null ? null : CategoryMapper.MapCateory(p.Category),
                 SubCategoryId = p.SubCategoryId,
+                SubCategory = p.SubCategory == null ? null : CategoryMapper.MapCateory(p.SubCategory),
                 Price = p.Price,
                 Description=p.Description,
                 Slug = p.Slug,
                 MetaDescription = p.MetaDescription,
-                MetaTag = p.MetaTag
+                MetaTag = p.MetaTag,
+                Brand = p.Brand==null?null:BrandMapper.MapBrand(p.Brand)
+
             };
         }  
         public static Product MapToCreatePoroductDto(CreatePoroductDto p)

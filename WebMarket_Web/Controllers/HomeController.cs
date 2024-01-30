@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebMarket_CoreLayer.DTOs.MainPage;
 using WebMarket_CoreLayer.Servises.Product;
 using WebMarket_Web.Models;
 
@@ -8,9 +9,9 @@ namespace WebMarket_Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IProductService _productService;
+        private readonly IMainPageService _productService;
 
-        public HomeController(ILogger<HomeController> logger, IProductService productService)
+        public HomeController(ILogger<HomeController> logger, IMainPageService productService)
         {
             _logger = logger;
             _productService = productService;
@@ -18,14 +19,15 @@ namespace WebMarket_Web.Controllers
 
         public IActionResult Index()
         {
-
-            var products = _productService.GetAllProduct();
-            return View(products);
+            var main=_productService.GetData();
+            
+            return View(main);
         }
 
-        public IActionResult Privacy()
+        public IActionResult ShowProdut(string slug)
         {
-            return View();
+            var product=_productService.GetProductBySlug(slug);
+            return View(product);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
