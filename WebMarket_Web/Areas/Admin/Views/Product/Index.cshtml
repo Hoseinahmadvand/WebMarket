@@ -41,7 +41,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Category</th>
+                                @*<th scope="col">Brand</th>*@
                                 <th scope="col">Price</th>
                                
                                 <th scope="col">Oparation</th>
@@ -54,11 +55,11 @@
                                 <tr>
                                     <td>@counter</td>
                                     <td>@item.Name</td>
-                                    <td>@item.Description</td>
+                                    <td>@item.Category.Title</td>
+                                    @*<td>@item.Brand.Name</td>*@
                                     <td>@item.Price</td>
 
                                     <td>
-
                                         <a asp-area="Admin" asp-controller="Product"
                                        asp-action="Edit" asp-route-Id="@item.Id">
                                             <i class="bi bi-pencil-square"></i>

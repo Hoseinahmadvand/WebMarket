@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebMarket_DataLayer.Entities;
+using WebMarket_DataLayer.Entities.Users;
 
 namespace WebMarket_DataLayer.Context
 {
@@ -22,6 +23,13 @@ namespace WebMarket_DataLayer.Context
         public DbSet<Brand> brands { get; set; }
 
         #endregion
+
+        #region Users
+
+        public DbSet<User> users { get; set; }
+
+        #endregion
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 

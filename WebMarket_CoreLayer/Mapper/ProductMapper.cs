@@ -12,7 +12,7 @@ namespace WebMarket_CoreLayer.Mapper
     {
         public static ProductDto MapToPoroductDto(Product p)
         {
-            return new ProductDto() 
+            return new ProductDto()
             {
                 Id = p.Id,
                 Name = p.Name,
@@ -21,24 +21,24 @@ namespace WebMarket_CoreLayer.Mapper
                 SubCategoryId = p.SubCategoryId,
                 SubCategory = p.SubCategory == null ? null : CategoryMapper.MapCateory(p.SubCategory),
                 Price = p.Price,
-                Description=p.Description,
+                Description = p.Description,
                 Slug = p.Slug,
                 MetaDescription = p.MetaDescription,
                 MetaTag = p.MetaTag,
-                Brand = p.Brand==null?null:BrandMapper.MapBrand(p.Brand)
+                Brand = p.Brand == null ? null : BrandMapper.MapBrand(p.Brand)
 
             };
-        }  
+        }
         public static Product MapToCreatePoroductDto(CreatePoroductDto p)
         {
-            return new Product() 
+            return new Product()
             {
-               
+
                 Name = p.Name,
                 CategoryId = p.CategoryId,
                 SubCategoryId = p.SubCategoryId,
                 Price = p.Price,
-                Description=p.Description,
+                Description = p.Description,
                 Slug = p.Slug,
                 MetaDescription = p.MetaDescription,
                 MetaTag = p.MetaTag,
